@@ -74,6 +74,7 @@ public class IngresosPacientesController {
         }
     }
 
+
     @GetMapping("/listar")
     public String listarIngresosPacientes(Model model){
         List<IngresosPacientes> ingresosPacientes = ingresosPacientesService.getAllIngresosPacientes();

@@ -48,6 +48,7 @@ public class PacientesServiciosController {
         return "listarPacientesServicios";
     }
 
+
     @PostMapping("/guardar")
     public String registrarPacienteServicio(
             @RequestParam("id_paciente") int idPaciente,

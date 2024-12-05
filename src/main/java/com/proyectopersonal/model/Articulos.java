@@ -9,6 +9,7 @@
     @Table(name = "articulos")
     public class Articulos {
 
+
         @Id
         private int codigo_articulo;
         //

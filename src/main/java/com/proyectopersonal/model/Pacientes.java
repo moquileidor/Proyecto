@@ -23,6 +23,7 @@ public class Pacientes {
     @Column(name = "direccion_paciente")
     private String direccion_paciente;
 
+
     @Column(name = "telefono_paciente")
     private String telefono_paciente;
 

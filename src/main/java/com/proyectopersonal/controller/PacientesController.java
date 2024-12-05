@@ -42,6 +42,7 @@ public class PacientesController {
         return "listarPacientes";  // Nombre de la vista para mostrar los pacientes
     }
 
+
     // Mostrar el formulario de edición de un paciente
     @GetMapping("/editar/{id}")
     public String mostrarFormularioEdicion(@PathVariable("id") int id, Model model) {

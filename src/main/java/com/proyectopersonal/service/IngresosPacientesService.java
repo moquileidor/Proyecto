@@ -37,6 +37,7 @@ public class IngresosPacientesService {
             throw new IllegalArgumentException("El paciente con id " + idPaciente + " ya está ingresado.");
         }
 
+
         // Verificar que la habitación exista y esté disponible
         Habitaciones habitacion = habitacionesRepository.findById(numHabitacion).orElseThrow(() ->
                 new IllegalArgumentException("Habitación con número " + numHabitacion + " no encontrada.")

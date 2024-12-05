@@ -13,6 +13,7 @@ public class DataInitializer {
     @Autowired
     private ServiciosRepository serviciosRepository;
 
+
     @Bean
     public CommandLineRunner initData() {
         return args -> {

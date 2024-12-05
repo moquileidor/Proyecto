@@ -8,4 +8,5 @@ public interface IngresosPacientesRepository extends JpaRepository<IngresosPacie
     void deleteByPacienteIdPaciente(int idPaciente);
     boolean existsByPacienteIdPaciente(int idPaciente);
     Optional<IngresosPacientes> findByPacienteIdPaciente(int idPaciente);
+
 }

@@ -39,6 +39,7 @@ public class MedicosService {
         return medico.get();
     }
 
+
     public Medicos updateMedico(Medicos medico){
         Medicos medicoExistente = getMedicoById(medico.getId_medico());
         // Actualizar solo los campos necesarios

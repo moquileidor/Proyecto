@@ -12,6 +12,7 @@ import lombok.Data;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Medicos  {
 
+
     @Id
     @Column(name = "id_medico")
     private int id_medico;

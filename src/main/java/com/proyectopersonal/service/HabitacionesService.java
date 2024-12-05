@@ -13,6 +13,7 @@ public class HabitacionesService {
     @Autowired
     private HabitacionesRepository habitacionesRepository;
 
+
     //Mostrar todas las habitaciones
     public List<Habitaciones> getAllHabitaciones(){
         return habitacionesRepository.findAll();

@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface HabitacionesRepository extends JpaRepository<Habitaciones, Integer> {
     List<Habitaciones> findByEstado(String estado);
+
 }

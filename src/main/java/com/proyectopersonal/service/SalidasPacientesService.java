@@ -13,6 +13,7 @@ public class SalidasPacientesService {
     @Autowired
     private SalidasPacientesRepository salidasPacientesRepository;
 
+
     public List<SalidasPacientes> getAllSalidasPacientes() {
         return salidasPacientesRepository.findAll();
     }

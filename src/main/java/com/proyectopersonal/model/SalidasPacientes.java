@@ -23,4 +23,5 @@ public class SalidasPacientes {
 
     @Column(name = "total_a_pagar")
     private double totalAPagar;
+
 }

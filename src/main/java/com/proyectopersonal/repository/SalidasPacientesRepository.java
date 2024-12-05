@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SalidasPacientesRepository extends JpaRepository<SalidasPacientes, Integer> {
     List<SalidasPacientes> findByIdPaciente(int idPaciente);
+
 }

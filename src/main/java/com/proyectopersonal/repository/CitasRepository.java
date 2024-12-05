@@ -9,4 +9,5 @@ import java.util.List;
 public interface CitasRepository extends JpaRepository<Citas, Integer> {
     List<Citas> findByIdMedico(int idMedico);
     List<Citas> findByIdPaciente(int idPaciente);
+
 }

@@ -34,6 +34,7 @@ public class PacientesServicioService {
         return pacientesServiciosRepository.save(pacienteServicio);
     }
 
+
     public void deletePacienteServicio(int id){
         pacientesServiciosRepository.deleteById(id);
     }

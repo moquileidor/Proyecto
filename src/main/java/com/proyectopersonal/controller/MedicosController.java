@@ -63,6 +63,7 @@ public class MedicosController {
     }
     }
 
+
     @GetMapping("/eliminar/{id}")
     public String eliminarMedico(@PathVariable("id") int id){
         medicosService.deleteMedico(id);

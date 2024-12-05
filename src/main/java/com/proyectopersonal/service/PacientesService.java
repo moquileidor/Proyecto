@@ -38,6 +38,7 @@ public class PacientesService {
         return pacientesRepository.save(paciente);
     }
 
+
     // Obtener un paciente por su ID
     public Pacientes getPacienteById(int id) {
         Optional<Pacientes> paciente = pacientesRepository.findById(id);

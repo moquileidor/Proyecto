@@ -59,6 +59,7 @@ public class SalidasPacientesController {
         double totalAPagar = servicios.stream().mapToDouble(PacientesServicios::getPrecioServicio).sum();
         String detalleCobro = servicios.stream().map(PacientesServicios::getNombreServicio).collect(Collectors.joining(", "));
 
+
         // Crear la salida del paciente
         SalidasPacientes salidaPaciente = new SalidasPacientes();
         salidaPaciente.setIdPaciente(idPaciente);

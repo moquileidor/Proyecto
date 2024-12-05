@@ -7,6 +7,7 @@ import lombok.Data;
 public class Citas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int id_cita;
     @Column(name = "id_paciente")
     private int idPaciente;

@@ -20,6 +20,7 @@ public class Habitaciones {
     @Column(name = "estado_Habitacion")
     private String estado;
 
+
     @OneToMany(mappedBy = "habitaciones", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Articulos> articulos;

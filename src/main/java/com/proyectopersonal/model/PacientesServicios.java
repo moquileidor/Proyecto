@@ -23,4 +23,5 @@ public class PacientesServicios {
 
     @Column(name = "precio_servicio")
     private double precioServicio;
+
 }

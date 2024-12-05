@@ -18,6 +18,7 @@ public class IngresosPacientes implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_ingreso;
 
+
     @ManyToOne
     @JoinColumn(name = "idPaciente")
     @JsonBackReference

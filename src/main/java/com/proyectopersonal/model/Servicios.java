@@ -13,6 +13,7 @@ public class Servicios {
     @Id
     @Column(name = "id_servicio")
     private int idServicio;
+
     @Column(name = "nombre_servicio")
     private String nombreServicio;
     @Column(name = "precio_servicio")
