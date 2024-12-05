@@ -11,7 +11,7 @@
 
         @Id
         private int codigo_articulo;
-
+        //
         private String nombre_articulo;
 
         private int cantidad_articulo;
