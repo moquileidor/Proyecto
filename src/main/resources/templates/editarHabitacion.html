@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Habitación</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+        <label for="menu-toggle" class="menu-toggle">☰</label>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li>
+                <a href="#">Pacientes</a>
+                <ul>
+                    <li><a th:href="@{/pacientes/listar}">Listar o editar pacientes</a></li>
+                    <li><a th:href="@{/pacientes/registrar}">Registrar Paciente</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Medicos</a>
+                <ul>
+                    <li><a th:href="@{/medicos/listar}">Listar o editar Medicos</a></li>
+                    <li><a th:href="@{/medicos/registrar}">Registrar Medico</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Habitaciones</a>
+                <ul>
+                    <li><a th:href="@{/habitaciones/listar}">Listar o editar Habitaciones</a></li>
+                    <li><a th:href="@{/habitaciones/registrar}">Registrar Habitación</a></li>
+                    <li><a th:href="@{/habitaciones/listarConArticulos}">Habitaciones con Artículos</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Articulos</a>
+                <ul>
+                    <li><a th:href="@{/articulos/listar}">Listar o editar Articulos</a></li>
+                    <li><a th:href="@{/articulos/registrar}">Registrar Articulo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Citas</a>
+                <ul>
+                    <li><a th:href="@{/citas/listarCitas}">Listar o editar Citas</a></li>
+                    <li><a th:href="@{/citas/registrar}">Registrar Cita</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Ingreso de pacientes</a>
+                <ul>
+                    <li><a th:href="@{/ingresos/listar}">Listar o editar Ingresos de pacientes</a></li>
+                    <li><a th:href="@{/ingresos/registrar}">Registrar Ingreso de paciente</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Salida de pacientes</a>
+                <ul>
+                    <li><a th:href="@{/salidas/listar}">Listar o editar Salidas de pacientes</a></li>
+                    <li><a th:href="@{/salidas/registrar}">Registrar Salida de paciente</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Servicios</a>
+                <ul>
+                    <li><a th:href="@{/pacientesServicios/listarPacientesServicios}">Listar o editar Servicios</a></li>
+                    <li><a th:href="@{/pacientesServicios/registrar}">Registrar Servicio</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+<h2>Editar Habitación</h2>
+
+<div th:if="${error}" style="color: red;">
+    <p th:text="${error}"></p>
+</div>
+
+<form action="#" th:action="@{/habitaciones/editar/{id}(id=${habitacion.num_habitacion})}" th:object="${habitacion}" method="post">
+    <div>
+        <label for="num_habitacion">Número de Habitación:</label>
+        <input type="text" id="num_habitacion" name="num_habitacion" th:field="*{num_habitacion}" readonly/>
+    </div>
+    <div>
+        <label for="tipo_habitacion">Tipo de habitación:</label>
+        <select id="tipo_habitacion" name="tipo_habitacion" th:field="*{tipo_habitacion}" required>
+            <option value="Individual">Individual</option>
+            <option value="Compartida">Compartida</option>
+        </select>
+    </div>
+    <div>
+        <label for="estado">Estado de la habitación:</label>
+        <select id="estado" name="estado" th:field="*{estado}" required>
+            <option value="Disponible">Disponible</option>
+            <option value="Ocupada">Ocupada</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Actualizar Habitación</button>
+    </div>
+</form>
+</body>
+</html>
+

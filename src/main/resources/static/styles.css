@@ -1,0 +1,258 @@
+/*/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    margin-top: 70px;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilos del nav */
+nav {
+    background: var(--primary-color);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav input[type="checkbox"] {
+    display: none;
+}
+
+.menu-toggle {
+    display: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary-color);
+    min-width: 200px;
+    border-radius: var(--border-radius);
+    z-index: 1000;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+/* Estilos de tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    margin: 2rem 0;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: var(--primary-color);
+    color: white;
+}
+
+tr:hover {
+    background: #f5f6fa;
+}
+
+/* Estilos de formularios */
+form {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form div {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+button {
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    body {
+        padding: 10px;
+        margin-top: 100px;
+    }
+
+    form {
+        width: 95%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    nav input[type="checkbox"]:checked ~ ul {
+        display: flex;
+    }
+
+    nav ul li {
+        position: static;
+        width: 100%;
+    }
+
+    nav ul li a {
+        padding: 15px;
+        text-align: center;
+    }
+
+    nav ul ul {
+        position: static;
+        display: none;
+        background: var(--secondary-color);
+        width: 100%;
+    }
+
+    nav ul li:hover > ul {
+        display: block;
+    }
+
+    table,
+    table thead,
+    table tbody,
+    table th,
+    table td,
+    table tr {
+        display: block;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+    }
+
+    table td {
+        display: block;
+        text-align: right;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        margin-top: 120px;
+    }
+
+    form div {
+        margin-bottom: 15px;
+    }
+
+    input, select {
+        padding: 10px;
+    }
+}

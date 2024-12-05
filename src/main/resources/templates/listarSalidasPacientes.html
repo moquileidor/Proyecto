@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+        <label for="menu-toggle" class="menu-toggle">☰</label>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li>
+                <a href="#">Pacientes</a>
+                <ul>
+                    <li><a th:href="@{/pacientes/listar}">Listar o editar pacientes</a></li>
+                    <li><a th:href="@{/pacientes/registrar}">Registrar Paciente</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Medicos</a>
+                <ul>
+                    <li><a th:href="@{/medicos/listar}">Listar o editar Medicos</a></li>
+                    <li><a th:href="@{/medicos/registrar}">Registrar Medico</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Habitaciones</a>
+                <ul>
+                    <li><a th:href="@{/habitaciones/listar}">Listar o editar Habitaciones</a></li>
+                    <li><a th:href="@{/habitaciones/registrar}">Registrar Habitación</a></li>
+                    <li><a th:href="@{/habitaciones/listarConArticulos}">Habitaciones con Artículos</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Articulos</a>
+                <ul>
+                    <li><a th:href="@{/articulos/listar}">Listar o editar Articulos</a></li>
+                    <li><a th:href="@{/articulos/registrar}">Registrar Articulo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Citas</a>
+                <ul>
+                    <li><a th:href="@{/citas/listarCitas}">Listar o editar Citas</a></li>
+                    <li><a th:href="@{/citas/registrar}">Registrar Cita</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Ingreso de pacientes</a>
+                <ul>
+                    <li><a th:href="@{/ingresos/listar}">Listar o editar Ingresos de pacientes</a></li>
+                    <li><a th:href="@{/ingresos/registrar}">Registrar Ingreso de paciente</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Salida de pacientes</a>
+                <ul>
+                    <li><a th:href="@{/salidas/listar}">Listar o editar Salidas de pacientes</a></li>
+                    <li><a th:href="@{/salidas/registrar}">Registrar Salida de paciente</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Servicios</a>
+                <ul>
+                    <li><a th:href="@{/pacientesServicios/listarPacientesServicios}">Listar o editar Servicios</a></li>
+                    <li><a th:href="@{/pacientesServicios/registrar}">Registrar Servicio</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <h1>Salidas de Pacientes</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id del paciente</th>
+                <th>Nombre del paciente</th>
+                <th>Detalle de cobro</th>
+                <th>Valor a pagar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="salida : ${salidasPacientes}">
+                <td th:text="${salida.id}"></td>
+                <td th:text="${salida.idPaciente}"></td>
+                <td th:text="${salida.nombrePaciente}"></td>
+                <td th:text="${salida.detalleCobro}"></td>
+                <td th:text="${salida.totalAPagar}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

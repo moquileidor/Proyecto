@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Médico</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+        function calcularFechaNacimiento() {
+            const edad = document.getElementById("edad_medico").value;
+            const fechaNacimientoInput = document.getElementById("fecha_nacimiento_medico");
+            const anioActual = new Date().getFullYear();
+
+            if (edad && !isNaN(edad)) {
+                // Obtener el mes y el día seleccionados por el usuario, si existen
+                const fechaActual = new Date(fechaNacimientoInput.value);
+                const mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0');
+                const dia = fechaActual.getDate().toString().padStart(2, '0');
+
+                // Calcula el año de nacimiento basado en la edad ingresada
+                const anioNacimiento = anioActual - edad;
+
+                // Actualizar el campo de fecha, preservando mes y día
+                fechaNacimientoInput.value = `${anioNacimiento}-${mes || '01'}-${dia || '01'}`;
+            }
+        }
+
+        function bloquearAnio() {
+            const fechaNacimientoInput = document.getElementById("fecha_nacimiento_medico");
+            const edad = document.getElementById("edad_medico").value;
+
+            if (edad && !isNaN(edad)) {
+                const fechaSeleccionada = new Date(fechaNacimientoInput.value);
+                const anioIngresado = fechaSeleccionada.getFullYear();
+                const anioActual = new Date().getFullYear();
+                const anioCalculado = anioActual - edad;
+
+                // Asegurarse de que el año coincida con la edad ingresada
+                if (anioIngresado !== anioCalculado) {
+                    const mes = (fechaSeleccionada.getMonth() + 1).toString().padStart(2, '0');
+                    const dia = fechaSeleccionada.getDate().toString().padStart(2, '0');
+                    fechaNacimientoInput.value = `${anioCalculado}-${mes}-${dia}`;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+        <label for="menu-toggle" class="menu-toggle">☰</label>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li>
+                <a href="#">Pacientes</a>
+                <ul>
+                    <li><a th:href="@{/pacientes/listar}">Listar o editar pacientes</a></li>
+                    <li><a th:href="@{/pacientes/registrar}">Registrar Paciente</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Medicos</a>
+                <ul>
+                    <li><a th:href="@{/medicos/listar}">Listar o editar Medicos</a></li>
+                    <li><a th:href="@{/medicos/registrar}">Registrar Medico</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Habitaciones</a>
+                <ul>
+                    <li><a th:href="@{/habitaciones/listar}">Listar o editar Habitaciones</a></li>
+                    <li><a th:href="@{/habitaciones/registrar}">Registrar Habitación</a></li>
+                    <li><a th:href="@{/habitaciones/listarConArticulos}">Habitaciones con Artículos</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Articulos</a>
+                <ul>
+                    <li><a th:href="@{/articulos/listar}">Listar o editar Articulos</a></li>
+                    <li><a th:href="@{/articulos/registrar}">Registrar Articulo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Citas</a>
+                <ul>
+                    <li><a th:href="@{/citas/listarCitas}">Listar o editar Citas</a></li>
+                    <li><a th:href="@{/citas/registrar}">Registrar Cita</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Ingreso de pacientes</a>
+                <ul>
+                    <li><a th:href="@{/ingresos/listar}">Listar o editar Ingresos de pacientes</a></li>
+                    <li><a th:href="@{/ingresos/registrar}">Registrar Ingreso de paciente</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Salida de pacientes</a>
+                <ul>
+                    <li><a th:href="@{/salidas/listar}">Listar o editar Salidas de pacientes</a></li>
+                    <li><a th:href="@{/salidas/registrar}">Registrar Salida de paciente</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Servicios</a>
+                <ul>
+                    <li><a th:href="@{/pacientesServicios/listarPacientesServicios}">Listar o editar Servicios</a></li>
+                    <li><a th:href="@{/pacientesServicios/registrar}">Registrar Servicio</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+<h2>Formulario de Registro de Médicos</h2>
+
+<form th:action="@{/medicos/guardar}" method="post">
+    <div>
+        <label for="id_medico">Cédula:</label>
+        <input type="text" id="id_medico" name="id_medico" th:value="${medico.id_medico}" required/>
+    </div>
+    <div>
+        <label for="nombre_medico">Nombre:</label>
+        <input type="text" id="nombre_medico" name="nombre_medico" th:value="${medico.nombre_medico}" required/>
+    </div>
+    <div>
+        <label for="edad_medico">Edad:</label>
+        <input type="number" id="edad_medico" name="edad_medico" th:value="${medico.edad_medico}" oninput="calcularFechaNacimiento()" required>
+    </div>
+    <div>
+        <label for="telefono_medico">Teléfono:</label>
+        <input type="number" id="telefono_medico" name="telefono_medico" th:value="${medico.telefono_medico}" required>
+    </div>
+    <div>
+        <label for="fecha_nacimiento_medico">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento_medico" name="fecha_nacimiento_medico" th:value="${medico.fecha_nacimiento_medico}" oninput="bloquearAnio()" required>
+    </div>
+    <div>
+        <button type="submit">Registrar Médico</button>
+    </div>
+</form>
+
+</body>
+</html>

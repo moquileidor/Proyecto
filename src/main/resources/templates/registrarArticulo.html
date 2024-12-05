@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar Articulo</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+      <label for="menu-toggle" class="menu-toggle">☰</label>
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li>
+            <a href="#">Pacientes</a>
+            <ul>
+                <li><a th:href="@{/pacientes/listar}">Listar o editar pacientes</a></li>
+                <li><a th:href="@{/pacientes/registrar}">Registrar Paciente</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Medicos</a>
+            <ul>
+                <li><a th:href="@{/medicos/listar}">Listar o editar Medicos</a></li>
+                <li><a th:href="@{/medicos/registrar}">Registrar Medico</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Habitaciones</a>
+            <ul>
+                <li><a th:href="@{/habitaciones/listar}">Listar o editar Habitaciones</a></li>
+                <li><a th:href="@{/habitaciones/registrar}">Registrar Habitación</a></li>
+                <li><a th:href="@{/habitaciones/listarConArticulos}">Habitaciones con Artículos</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Articulos</a>
+            <ul>
+                <li><a th:href="@{/articulos/listar}">Listar o editar Articulos</a></li>
+                <li><a th:href="@{/articulos/registrar}">Registrar Articulo</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Citas</a>
+            <ul>
+                <li><a th:href="@{/citas/listarCitas}">Listar o editar Citas</a></li>
+                <li><a th:href="@{/citas/registrar}">Registrar Cita</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Ingreso de pacientes</a>
+            <ul>
+                <li><a th:href="@{/ingresos/listar}">Listar o editar Ingresos de pacientes</a></li>
+                <li><a th:href="@{/ingresos/registrar}">Registrar Ingreso de paciente</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Salida de pacientes</a>
+            <ul>
+                <li><a th:href="@{/salidas/listar}">Listar o editar Salidas de pacientes</a></li>
+                <li><a th:href="@{/salidas/registrar}">Registrar Salida de paciente</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Servicios</a>
+            <ul>
+                <li><a th:href="@{/pacientesServicios/listarPacientesServicios}">Listar o editar Servicios</a></li>
+                <li><a th:href="@{/pacientesServicios/registrar}">Registrar Servicio</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<h2>Registrar Articulo</h2>
+<form th:action="@{/articulos/guardar}" method="post">
+  <div>
+    <label for="codigo_articulo">Código del Artículo:</label>
+    <input type="text" id="codigo_articulo" name="codigo_articulo" th:value="${articulo.codigo_articulo}" required/>
+  </div>
+  <div>
+    <label for="nombre_articulo">Nombre del Artículo:</label>
+    <input type="text" id="nombre_articulo" name="nombre_articulo" th:value="${articulo.nombre_articulo}" required/>
+  </div>
+  <div>
+    <label for="cantidad_articulo">Cantidad:</label>
+    <input type="number" id="cantidad_articulo" name="cantidad_articulo" th:value="${articulo.cantidad_articulo}" required/>
+  </div>
+  <div>
+    <label for="descripcion_articulo">Descripción:</label>
+    <input type="text" id="descripcion_articulo" name="descripcion_articulo" th:value="${articulo.descripcion_articulo}" required/>
+  </div>
+
+  <div>
+    <label for="codigo_habitacion">Código de Habitación:</label>
+    <select id="codigo_habitacion" name="habitaciones.num_habitacion" required>
+      <option value="" disabled selected>Seleccione una habitación</option>
+      <option th:each="habitacion : ${habitaciones}"
+              th:value="${habitacion.num_habitacion}"
+              th:text="${habitacion.num_habitacion}"></option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Registrar Artículo</button>
+  </div>
+
+</form>
+
+</body>
+</html>
